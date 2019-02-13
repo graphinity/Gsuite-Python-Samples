@@ -9,6 +9,8 @@ makes requests to the Gmail API.
 
 ```
 pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+pip install --upgrade google-api-python-client
+easy_install --upgrade google-api-python-client
 ```
 
 ## Run
