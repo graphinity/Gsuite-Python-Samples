@@ -16,5 +16,5 @@ easy_install --upgrade google-api-python-client
 ## Run
 
 ```
-python quickstart.py
+python readEmail.py
 ```
