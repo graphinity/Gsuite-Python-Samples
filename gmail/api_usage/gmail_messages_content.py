@@ -10,11 +10,16 @@ def show_message_content(service):
 
         if nmsgs > 1:  # skip if <1 msgs in thread
             msg = tdata['messages'][0]['payload']
-            subject = ''
-            for part in msg['parts']:
-                if part['name'] == 'Subject':
-                    subject = part['value']
-                    break
-            if subject:  # skip if no Subject line
-                print('- %s (%d msgs)' % (subject, nmsgs))
+            msg_from = ''
+            unsubscribe_email = ''
 
+            for header in msg['headers']:
+                if header['name'] == 'From':
+                    msg_from = header['value']
+                if header['name'] == 'List-Unsubscribe':
+                    unsubscribe_email = header['value']
+                    break
+
+
+            if msg_from:  # skip if no Subject line
+                print('- MESSAGE SENDER: %s   UNSUBSCRIBE EMAIL: %s' % (msg_from, unsubscribe_email))
